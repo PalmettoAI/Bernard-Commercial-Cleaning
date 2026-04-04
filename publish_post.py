@@ -679,7 +679,7 @@ def git_push(files: list, commit_msg: str):
     run(["git", "commit", "-m", commit_msg])
     run(["git", "remote", "set-url", "origin", remote_with_token])
     try:
-        run(["git", "push", "origin", "main"])
+        run(["git", "-c", "credential.helper=", "push", "origin", "main"])
     finally:
         subprocess.run(["git", "remote", "set-url", "origin", clean_remote],
                        cwd=REPO_ROOT, capture_output=True)
