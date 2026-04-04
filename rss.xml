@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Bernard Commercial Cleaning Blog</title>
+  <link>https://bernardjanitorial.com/blog/</link>
+  <description>Commercial cleaning tips and industry insights for Midlands SC businesses.</description>
+  <atom:link href="https://bernardjanitorial.com/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Medical Office Cleaning in Columbia SC: What OSHA Requires</title>
+    <link>https://bernardjanitorial.com/blog/medical-office-cleaning-columbia-sc-osha-requirements.html</link>
+    <guid isPermaLink="true">https://bernardjanitorial.com/blog/medical-office-cleaning-columbia-sc-osha-requirements.html</guid>
+    <description>OSHA's bloodborne pathogen standard and EPA disinfectant requirements set the bar for medical office cleaning Columbia SC practices must meet — here's what the regulations actually require and how to document it.</description>
+    <pubDate>Sat, 04 Apr 2026 00:00:00 -0000</pubDate>
+  </item>
+  <item>
+    <title>5 Reasons Midlands Businesses Need Professional Janitorial Services</title>
+    <link>https://bernardjanitorial.com/blog/5-reasons-midlands-businesses-need-professional-janitorial-services.html</link>
+    <guid isPermaLink="true">https://bernardjanitorial.com/blog/5-reasons-midlands-businesses-need-professional-janitorial-services.html</guid>
+    <description>From banks to medical offices, discover why consistent professional cleaning protects your business, your clients, and your bottom line in Columbia and the Midlands SC.</description>
+    <pubDate>Sat, 04 Apr 2026 00:00:00 -0000</pubDate>
+  </item>
+</channel>
+</rss>
