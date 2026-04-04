@@ -1,0 +1,28 @@
+events {}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+
+    server {
+        listen ${PORT};
+        server_name _;
+
+        root /usr/share/nginx/html;
+        index index.html;
+
+        if ($host ~* ^www\.(.*)) {
+            return 301 $scheme://$1$request_uri;
+        }
+
+        location / {
+            try_files $uri $uri/ $uri.html =404;
+        }
+
+        location ~* \.(py|toml|json|lock)$ {
+            deny all;
+            return 404;
+        }
+    }
+}

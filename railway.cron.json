@@ -1,0 +1,18 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "_comment": "This file documents the cron service configuration. The cron service is a SEPARATE Railway service — not this web service.",
+  "deploy": {
+    "dockerfilePath": "Dockerfile.cron",
+    "startCommand": "python3 weekly_generator.py",
+    "cronSchedule": "0 8 * * 5"
+  },
+  "_variables": {
+    "BLOG_NICHE": "commercial cleaning services janitorial midlands south carolina",
+    "ANTHROPIC_API_KEY": "<your Anthropic API key>",
+    "GITHUB_TOKEN": "<your GitHub PAT with repo scope>",
+    "GITHUB_REPO": "PalmettoAI/Bernard-Commercial-Cleaning",
+    "SITE_URL": "https://bernardjanitorial.com",
+    "GSC_CREDENTIALS": "<base64-encoded service account JSON>",
+    "GSC_SITE_URL": "sc-domain:bernardjanitorial.com"
+  }
+}
