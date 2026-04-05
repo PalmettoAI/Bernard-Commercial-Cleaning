@@ -4,7 +4,6 @@
     "dockerfilePath": "Dockerfile.cron"
   },
   "deploy": {
-    "startCommand": "python3 weekly_generator.py",
     "cronSchedule": "0 8 * * 5"
   }
 }
