@@ -666,7 +666,7 @@ def git_push(files: list, commit_msg: str):
     if not GITHUB_TOKEN:
         raise EnvironmentError("GITHUB_TOKEN is not set")
 
-    remote_with_token = f"https://{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
+    remote_with_token = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
     clean_remote      = f"https://github.com/{GITHUB_REPO}.git"
 
     def run(cmd, **kw):
