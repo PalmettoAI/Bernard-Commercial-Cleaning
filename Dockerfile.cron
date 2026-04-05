@@ -1,6 +1,10 @@
 FROM python:3.11-slim
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir anthropic google-auth cryptography
-WORKDIR /app
-COPY . .
-CMD ["python3", "weekly_generator.py"]
+# Clone the repo at container start so weekly_generator runs inside a real git repo.
+# GITHUB_TOKEN and GITHUB_REPO are injected as Railway env vars at runtime.
+CMD bash -c 'set -e && \
+  CLONE_DIR=$(mktemp -d /tmp/blog-cron-XXXXXX) && \
+  git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" "$CLONE_DIR" && \
+  cd "$CLONE_DIR" && \
+  exec python3 weekly_generator.py'
