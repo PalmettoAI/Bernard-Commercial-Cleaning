@@ -91,7 +91,7 @@ def ensure_git_repo():
         sys.exit("Error: GITHUB_TOKEN must be set to clone the repo in cron mode.")
 
     tmpdir = tempfile.mkdtemp(prefix="blog-cron-")
-    clone_url = f"https://{github_token}@github.com/{github_repo}.git"
+    clone_url = f"https://x-access-token:{github_token}@github.com/{github_repo}.git"
     print(f"  Not in a git repo — cloning {github_repo} into {tmpdir} ...")
     subprocess.run(["git", "clone", clone_url, tmpdir], check=True)
     print("  Clone complete. Re-executing from cloned directory.")
@@ -99,7 +99,15 @@ def ensure_git_repo():
     script = os.path.join(tmpdir, "weekly_generator.py")
     env = os.environ.copy()
     env["_BLOG_CRON_TMPDIR"] = tmpdir
-    os.execve(sys.executable, [sys.executable, script] + sys.argv[1:], env)
+    # Use subprocess.run instead of os.execve so Railway keeps logging the output
+    result = subprocess.run(
+        [sys.executable, script] + sys.argv[1:],
+        env=env,
+        stdout=sys.stdout,
+        stderr=sys.stderr,
+    )
+    shutil.rmtree(tmpdir, ignore_errors=True)
+    sys.exit(result.returncode)
 
 
 LLM_ENDPOINT        = os.environ.get("LLM_ENDPOINT", "")
